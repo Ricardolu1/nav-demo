@@ -50,11 +50,13 @@
           divxxx.appendChild(kbdxxx)
           index2++
         }
-        console.log(index2)
         index++
       }
-      document.onkeypress = function asda(xzkjcnxlkcjlk) {
-        console.log('我发现你输入了一个数')
+      document.onkeypress = function(put) {
+        key = put["key"] //q w r t
+        website = hash[key]
+        console.log(website)
+        location.href='http://'+website
       }
     </script>
   </body>
