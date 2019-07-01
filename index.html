@@ -8,33 +8,47 @@
   </head>
   <body>
     <header></header>
-    <main>
-      
-    </main>
+    <main id="mainxxx"></main>
     <footer></footer>
     <script>
-      var keys={
-        0:['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-        1:['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-        2:['z', 'x', 'c', 'v', 'b', 'n', 'm'],
-        length:3,
-      } 
-      var hash={
-        q:'qq.com',
-        w:'weibo.com',
-        e:'ele.me',
-        r:'renren,com',
-        t:'tianya.com',
-        y:'youtube.com',
-        u:'uc.com',
-        i:'iqiyi.com',
-        o:'opera.com',
-        p:undefined,
-        a:'acfun.tv',
-        s:'souhu.com',
-        z:'zhihu.com',
-        m:'www.mcdonalds.con.cn',
+      var keys = {
+        0: ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+        1: ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+        2: ["z", "x", "c", "v", "b", "n", "m"],
+        length: 3
+      }
+      var hash = {
+        q: "qq.com",
+        w: "weibo.com",
+        e: "ele.me",
+        r: "renren,com",
+        t: "tianya.com",
+        y: "youtube.com",
+        u: "uc.com",
+        i: "iqiyi.com",
+        o: "opera.com",
+        p: undefined,
+        a: "acfun.tv",
+        s: "souhu.com",
+        z: "zhihu.com",
+        m: "www.mcdonalds.con.cn"
+      }
+      index = 0
+      while (index < keys["length"]) {
+        divxxx = document.createElement("div")
+        mainxxx.appendChild(divxxx)
+        row=keys[index]//第一个数组 第二个数组 第三个数组
+        index2 = 0
+        while (index2 < row['length']) {//0-9 0-8 0-6取值就是从0到length-1，把数组遍历了一遍
+          kbdxxx = document.createElement("kbd")
+          kbdxxx.textContent = row[index2]
+          divxxx.appendChild(kbdxxx)
+          index2++
+        }
+        console.log(index2)
+        index++
       }
     </script>
   </body>
 </html>
+ 
