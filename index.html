@@ -47,16 +47,29 @@
           //0-9 0-8 0-6取值就是从0到length-1，把数组遍历了一遍
           kbdxxx = document.createElement("kbd")
           kbdxxx.textContent = row[index2]
+          buttonxxx=document.createElement('button')
+          buttonxxx.textContent='编辑'
+          buttonxxx.id=row[index2]
+          buttonxxx.onclick=function(a) {
+            key = a['target']['id']//qwr  知道用户输入的是哪一个按钮
+            x=prompt('给我一个网址')// qq.com
+            hash[key]=x  // 覆盖按钮对应的网站
+            console.log(hash )
+            
+          }
           divxxx.appendChild(kbdxxx)
+          kbdxxx.appendChild(buttonxxx)
           index2++
         }
         index++
       }
+      
       document.onkeypress = function(put) {
-        key = put["key"] //q w r t
-        website = hash[key]
+        key = put["key"] //q w r t拿到用户按的键
+        website = hash[key]//得到用户按键的网站
         console.log(website)
-        location.href='http://'+website
+        //location.href='http://'+website//把当前地址变成新网站的地址
+        window.open('http://'+website, '_blank')
       }
     </script>
   </body>

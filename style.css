@@ -1,26 +1,37 @@
-*{
+* {
   margin: 0;
   padding: 0;
 }
-a{
+a {
   text-decoration: none;
 }
-kbd{
+kbd {
   border: 1px solid red;
-  height: 2em;
-  width: 2em;
+  height: 4em;
+  width: 4em;
   display: inline-block;
   text-transform: uppercase;
+  position: relative;
 }
-main{
+kbd>button{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: none;
+}
+kbd:hover>button{
+  display: inline-block;
+
+}
+main {
   text-align: center;
 }
-#mainxxx{
+#mainxxx {
   display: inline-block;
 }
-#mainxxx>div:nth-child(2){
-  margin-left: 1em;
-}
-#mainxxx>div:nth-child(3){
+#mainxxx > div:nth-child(2) {
   margin-left: 2em;
+}
+#mainxxx > div:nth-child(3) {
+  margin-left: 4em;
 }
