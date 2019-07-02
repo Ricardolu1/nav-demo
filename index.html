@@ -39,15 +39,10 @@
       }
 
       //取出zzz中存下来的hash
-      var hashInLocalStorage = JSON.parse(getItem("zzz") || "") //注意直接这样拿，拿出来的是一个字串.有时候这样会拿到一个空的字符串，把一个空的东西拿去parse可能会出错的
+      var hashInLocalStorage = JSON.parse(localStorage.getItem("zzz") || "null") //注意直接这样拿，拿出来的是一个字串.有时候这样会拿到一个空的字符串，把一个空的东西拿去parse可能会出错的
       if (hashInLocalStorage) {
+        hash=hashInLocalStorage
       }
-      
-
-
-
-
-      
       index = 0
       while (index < keys["length"]) {
         divxxx = document.createElement("div")
@@ -74,7 +69,6 @@
         }
         index++
       }
-
       document.onkeypress = function(put) {
         key = put["key"] //q w r t拿到用户按的键
         website = hash[key] //得到用户按键的网站
