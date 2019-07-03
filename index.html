@@ -20,7 +20,7 @@
         2: ["z", "x", "c", "v", "b", "n", "m"],
         length: 3
       }
-      //遍历keys，生成kbf标签
+      //遍历keys，生成kbd标签
       var hash = {
         q: "qq.com",
         w: "weibo.com",
@@ -47,17 +47,22 @@
       while (index < keys["length"]) {
         div = document.createElement("div")
         div.className='row'
-        main.appendChild(div)
+        main.appendChild(div)//注意实际上这个mian是id叫main的那个元素，不是标签main
         row = keys[index] //第一个数组 第二个数组 第三个数组
         index2 = 0
         while (index2 < row["length"]) {
           //0-9 0-8 0-6取值就是从0到length-1，把数组遍历了一遍
           kbd = document.createElement("kbd")
-          kbd.textContent = row[index2]
+          span=document.createElement('span')
+          span.textContent=row[index2]
+          span.className='text'
+          kbd.appendChild(span)
           kbd.className='key'
           button = document.createElement("button")
           button.textContent = "编辑"
           button.id = row[index2]
+          image=document.createElement('img')
+          image.src='http://'+hash[row[index2]]+'/favicon.ico'
           button.onclick = function(a) {
             key = a["target"]["id"] //qwr  知道用户输入的是哪一个按钮
             x = prompt("给我一个网址") // qq.com
@@ -66,6 +71,7 @@
             console.log(hash)
           }
           div.appendChild(kbd)
+          kbd.appendChild(image)
           kbd.appendChild(button)
           index2++
         }
