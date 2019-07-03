@@ -61,11 +61,15 @@
           button = document.createElement("button")
           button.textContent = "编辑"
           button.id = row[index2]
-          image=document.createElement('img')
+          img=document.createElement('img')
           if (hash[row[index2]]) {
-            image.src='http://'+hash[row[index2]]+'/favicon.ico'
+          img.src='http://'+hash[row[index2]]+'/favicon.ico'
           }else{
-            image.src='https://i.loli.net/2019/07/03/5d1c6daae495655813.png'
+          img.src='https://i.loli.net/2019/07/03/5d1c6daae495655813.png'
+          }
+          img.onerror=function (xx) {
+            xx.target.src='https://i.loli.net/2019/07/03/5d1c6daae495655813.png'
+            
           }
           button.onclick = function(a) {
             key = a["target"]["id"] //qwr  知道用户输入的是哪一个按钮
@@ -75,7 +79,7 @@
             console.log(hash)
           }
           div.appendChild(kbd)
-          kbd.appendChild(image)
+          kbd.appendChild(img)
           kbd.appendChild(button)
           index2++
         }
@@ -85,7 +89,7 @@
         key = put["key"] //q w r t拿到用户按的键
         website = hash[key] //得到用户按键的网站
         console.log(website)
-        //location.href='http://'+website//把当前地址变成新网站的地址
+        location.href='http://'+website//把当前地址变成新网站的地址
         window.open("http://" + website, "_blank")
       }
     </script>
