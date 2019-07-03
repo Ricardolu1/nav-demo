@@ -25,6 +25,11 @@ kbd:hover>button{
 }
 main {
   text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 #main {
   display: inline-block;
@@ -54,4 +59,13 @@ main {
 }
 .row .key{
   margin: 0 10px;
+}
+body{
+  background: grey url(./wall2.jpg) no-repeat center center;
+  background-size: cover;
+}
+main .wrapper{
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+
 }
