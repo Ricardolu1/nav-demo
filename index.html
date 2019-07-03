@@ -62,7 +62,11 @@
           button.textContent = "编辑"
           button.id = row[index2]
           image=document.createElement('img')
-          image.src='http://'+hash[row[index2]]+'/favicon.ico'
+          if (hash[row[index2]]) {
+            image.src='http://'+hash[row[index2]]+'/favicon.ico'
+          }else{
+            image.src='https://i.loli.net/2019/07/03/5d1c6daae495655813.png'
+          }
           button.onclick = function(a) {
             key = a["target"]["id"] //qwr  知道用户输入的是哪一个按钮
             x = prompt("给我一个网址") // qq.com

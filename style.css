@@ -18,6 +18,7 @@ kbd>button{
   right: 0;
   bottom: 0;
   display: none;
+  font-size: 10px;
 }
 kbd:hover>button{
   display: inline-block;
@@ -57,6 +58,7 @@ main {
 }
 .row .key{
   margin: 0 10px;
+  position: relative;
 }
 body{
   background: grey url(./wall2.jpg) no-repeat center center;
@@ -70,6 +72,10 @@ main .wrapper{
 #main .row .key img{
   width: 16px;
   height: 16px;
+  position: absolute;
+  left:4px;
+  bottom:2px;
+
 }
 .row .key .text{
   position: absolute;
