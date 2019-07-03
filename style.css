@@ -18,7 +18,7 @@ kbd>button{
   right: 0;
   bottom: 0;
   display: none;
-  font-size: 10px;
+  font-size: 8px;
 }
 kbd:hover>button{
   display: inline-block;

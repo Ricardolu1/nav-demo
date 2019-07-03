@@ -38,26 +38,33 @@
         m: "www.mcdonalds.con.cn"
       }
 
-      //取出zzz中存下来的hash
+      //取出localStorage的zzz中存下来的hash
       var hashInLocalStorage = JSON.parse(localStorage.getItem("zzz") || "null") //注意直接这样拿，拿出来的是一个字串.有时候这样会拿到一个空的字符串，把一个空的东西拿去parse可能会出错的
       if (hashInLocalStorage) {
         hash = hashInLocalStorage
       }
-      index = 0
-      while (index < keys["length"]) {
+
+      for (var index = 0; index < keys["length"]; index++) {
         var div = document.createElement("div")
         div.className = "row"
         main.appendChild(div) //注意实际上这个mian是id叫main的那个元素，不是标签main
+
         var row = keys[index] //第一个数组 第二个数组 第三个数组
         var index2 = 0
         while (index2 < row["length"]) {
-          //0-9 0-8 0-6取值就是从0到length-1，把数组遍历了一遍
-          var kbd = document.createElement("kbd")
-          var span = document.createElement("span")
+          index2++
+        }
+        for (index2 = 0; index2 < row["length"]; index2++) {
+           //0-9 0-8 0-6取值就是从0到length-1，把数组遍历了一遍
+         
+           var span = document.createElement("span")
           span.textContent = row[index2]
           span.className = "text"
+
+          var kbd = document.createElement("kbd")
           kbd.appendChild(span)
           kbd.className = "key"
+          
           var button = document.createElement("button")
           button.textContent = "编辑"
           button.id = row[index2]
@@ -88,9 +95,7 @@
           div.appendChild(kbd)
           kbd.appendChild(img)
           kbd.appendChild(button)
-          index2++
         }
-        index++
       }
       document.onkeypress = function(put) {
         var key = put["key"] //q w r t拿到用户按的键
