@@ -26,12 +26,32 @@ kbd:hover>button{
 main {
   text-align: center;
 }
-#mainxxx {
+#main {
   display: inline-block;
 }
-#mainxxx > div:nth-child(2) {
-  margin-left: 2em;
+#main > div:nth-child(2) {
+  margin-left: -22px;
 }
-#mainxxx > div:nth-child(3) {
-  margin-left: 4em;
+#main > div:nth-child(3) {
+  margin-left: -80px;
+}
+.key{
+  width: 50px;
+  height: 40px;
+  background: linear-gradient(to bottom, #292929 0%,#111111 100%); 
+  border:1px solid #373737;
+  color: #c5c5c5;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #1a1b1c, 0 0 0 2px #1f2020,0 3px 0 2px #080808;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.row{
+  margin: 20px;
+}
+.row .key{
+  margin: 0 10px;
 }

@@ -10,7 +10,7 @@
   <body>
     <header></header>
     <main>
-      <div class="wrapper" id="mainxxx"></div>
+      <div class="wrapper" id="main"></div>
     </main>
     <footer></footer>
     <script>
@@ -45,26 +45,28 @@
       }
       index = 0
       while (index < keys["length"]) {
-        divxxx = document.createElement("div")
-        mainxxx.appendChild(divxxx)
+        div = document.createElement("div")
+        div.className='row'
+        main.appendChild(div)
         row = keys[index] //第一个数组 第二个数组 第三个数组
         index2 = 0
         while (index2 < row["length"]) {
           //0-9 0-8 0-6取值就是从0到length-1，把数组遍历了一遍
-          kbdxxx = document.createElement("kbd")
-          kbdxxx.textContent = row[index2]
-          buttonxxx = document.createElement("button")
-          buttonxxx.textContent = "编辑"
-          buttonxxx.id = row[index2]
-          buttonxxx.onclick = function(a) {
+          kbd = document.createElement("kbd")
+          kbd.textContent = row[index2]
+          kbd.className='key'
+          button = document.createElement("button")
+          button.textContent = "编辑"
+          button.id = row[index2]
+          button.onclick = function(a) {
             key = a["target"]["id"] //qwr  知道用户输入的是哪一个按钮
             x = prompt("给我一个网址") // qq.com
             hash[key] = x // 覆盖按钮对应的网站 这是一次hash变更
             localStorage.setItem("zzz", JSON.stringify(hash)) //只能存字符串
             console.log(hash)
           }
-          divxxx.appendChild(kbdxxx)
-          kbdxxx.appendChild(buttonxxx)
+          div.appendChild(kbd)
+          kbd.appendChild(button)
           index2++
         }
         index++
