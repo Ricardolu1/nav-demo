@@ -41,40 +41,47 @@
       //取出zzz中存下来的hash
       var hashInLocalStorage = JSON.parse(localStorage.getItem("zzz") || "null") //注意直接这样拿，拿出来的是一个字串.有时候这样会拿到一个空的字符串，把一个空的东西拿去parse可能会出错的
       if (hashInLocalStorage) {
-        hash=hashInLocalStorage
+        hash = hashInLocalStorage
       }
       index = 0
       while (index < keys["length"]) {
-        div = document.createElement("div")
-        div.className='row'
-        main.appendChild(div)//注意实际上这个mian是id叫main的那个元素，不是标签main
-        row = keys[index] //第一个数组 第二个数组 第三个数组
-        index2 = 0
+        var div = document.createElement("div")
+        div.className = "row"
+        main.appendChild(div) //注意实际上这个mian是id叫main的那个元素，不是标签main
+        var row = keys[index] //第一个数组 第二个数组 第三个数组
+        var index2 = 0
         while (index2 < row["length"]) {
           //0-9 0-8 0-6取值就是从0到length-1，把数组遍历了一遍
-          kbd = document.createElement("kbd")
-          span=document.createElement('span')
-          span.textContent=row[index2]
-          span.className='text'
+          var kbd = document.createElement("kbd")
+          var span = document.createElement("span")
+          span.textContent = row[index2]
+          span.className = "text"
           kbd.appendChild(span)
-          kbd.className='key'
-          button = document.createElement("button")
+          kbd.className = "key"
+          var button = document.createElement("button")
           button.textContent = "编辑"
           button.id = row[index2]
-          img=document.createElement('img')
+          var img = document.createElement("img")
           if (hash[row[index2]]) {
-          img.src='http://'+hash[row[index2]]+'/favicon.ico'
-          }else{
-          img.src='https://i.loli.net/2019/07/03/5d1c6daae495655813.png'
+            img.src = "http://" + hash[row[index2]] + "/favicon.ico"
+          } else {
+            img.src = "https://i.loli.net/2019/07/03/5d1c6daae495655813.png"
           }
-          img.onerror=function (xx) {
-            xx.target.src='https://i.loli.net/2019/07/03/5d1c6daae495655813.png'
-            
+          img.onerror = function(xx) {
+            xx.target.src =
+              "https://i.loli.net/2019/07/03/5d1c6daae495655813.png"
           }
           button.onclick = function(a) {
-            key = a["target"]["id"] //qwr  知道用户输入的是哪一个按钮
-            x = prompt("给我一个网址") // qq.com
+            button2=a['target']
+            img2=button2.previousSibling
+            var key = button2["id"] //qwr  知道用户输入的是哪一个按钮
+            var x = prompt("给我一个网址") // qq.com
             hash[key] = x // 覆盖按钮对应的网站 这是一次hash变更
+            img2.src="http://" + x + "/favicon.ico"
+            img2.onerror = function(xx) {
+            xx.target.src =
+              "https://i.loli.net/2019/07/03/5d1c6daae495655813.png"
+          }
             localStorage.setItem("zzz", JSON.stringify(hash)) //只能存字符串
             console.log(hash)
           }
@@ -86,10 +93,10 @@
         index++
       }
       document.onkeypress = function(put) {
-        key = put["key"] //q w r t拿到用户按的键
-        website = hash[key] //得到用户按键的网站
+        var key = put["key"] //q w r t拿到用户按的键
+        var website = hash[key] //得到用户按键的网站
         console.log(website)
-        location.href='http://'+website//把当前地址变成新网站的地址
+        // location.href = "http://" + website //把当前地址变成新网站的地址
         window.open("http://" + website, "_blank")
       }
     </script>
