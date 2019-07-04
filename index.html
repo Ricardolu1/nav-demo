@@ -14,28 +14,28 @@
     </main>
     <footer></footer>
     <script>
-      var keys = {
-        0: ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
-        1: ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
-        2: ["z", "x", "c", "v", "b", "n", "m"],
-        length: 3
-      }
-      //遍历keys，生成kbd标签
-      var hash = {
-        q: "qq.com",
-        w: "weibo.com",
-        e: "ele.me",
-        r: "renren,com",
-        t: "tianya.com",
-        y: "youtube.com",
-        u: "uc.com",
-        i: "iqiyi.com",
-        o: "opera.com",
-        p: undefined,
-        a: "acfun.tv",
-        s: "souhu.com",
-        z: "zhihu.com",
-        m: "www.mcdonalds.con.cn"
+      //1.初始化变量
+
+      var hashA = init()
+      var hash = hashA["hash"]
+      var keys = hashA["keys"]
+
+      //2.生成键盘
+      //遍历key，生成kbd标签
+      genenrateKeyBoard(keys, hash)
+
+      //3.监听用户动作
+
+      lisenTOUsers(hash)
+
+      function lisenTOUsers(hash) {
+        document.onkeypress = function(put) {
+          var key = put["key"] //q w r t拿到用户按的键
+          var website = hash[key] //得到用户按键的网站
+          console.log(website)
+          // location.href = "http://" + website //把当前地址变成新网站的地址
+          window.open("http://" + website, "_blank")
+        }
       }
 
       function getElementForm(name) {
@@ -87,46 +87,70 @@
         return img
       }
 
-      //取出localStorage的zzz中存下来的hash
-      var hashInLocalStorage = getElementForm("zzz") //注意直接这样拿，拿出来的是一个字串.有时候这样会拿到一个空的字符串，把一个空的东西拿去parse可能会出错的
-      if (hashInLocalStorage) {
-        hash = hashInLocalStorage
-      }
+      function genenrateKeyBoard(keys, hash) {
+        for (var index = 0; index < keys["length"]; index++) {
+          var div = tag("div")
+          div.className = "row"
 
-      for (var index = 0; index < keys["length"]; index++) {
-        var div = tag("div")
-        div.className = "row"
+          main.appendChild(div) //注意实际上这个mian是id叫main的那个元素，不是标签main
 
-        main.appendChild(div) //注意实际上这个mian是id叫main的那个元素，不是标签main
+          var row = keys[index] //第一个数组 第二个数组 第三个数组
 
-        var row = keys[index] //第一个数组 第二个数组 第三个数组
+          for (index2 = 0; index2 < row["length"]; index2++) {
+            //0-9 0-8 0-6取值就是从0到length-1，把数组遍历了一遍
 
-        for (index2 = 0; index2 < row["length"]; index2++) {
-          //0-9 0-8 0-6取值就是从0到length-1，把数组遍历了一遍
+            var span = creatSpan(row[index2])
 
-          var span = creatSpan(row[index2])
+            var button = creatButtton(row[index2])
 
-          var button = creatButtton(row[index2])
+            var img = creatImage(hash[row[index2]])
 
-          var img = creatImage(hash[row[index2]])
+            var kbd = tag("kbd")
+            kbd.className = "key"
 
-          var kbd = tag("kbd")
-          kbd.className = "key"
+            kbd.appendChild(span)
+            kbd.appendChild(button)
+            kbd.appendChild(img)
 
-          kbd.appendChild(span)
-          kbd.appendChild(button)
-          kbd.appendChild(img)
-
-          div.appendChild(kbd)
+            div.appendChild(kbd)
+          }
         }
       }
 
-      document.onkeypress = function(put) {
-        var key = put["key"] //q w r t拿到用户按的键
-        var website = hash[key] //得到用户按键的网站
-        console.log(website)
-        // location.href = "http://" + website //把当前地址变成新网站的地址
-        window.open("http://" + website, "_blank")
+      function init() {
+        var keys = {
+          0: ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+          1: ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
+          2: ["z", "x", "c", "v", "b", "n", "m"],
+          length: 3
+        }
+        //遍历keys，生成kbd标签
+        var hash = {
+          q: "qq.com",
+          w: "weibo.com",
+          e: "ele.me",
+          r: "renren,com",
+          t: "tianya.com",
+          y: "youtube.com",
+          u: "uc.com",
+          i: "iqiyi.com",
+          o: "opera.com",
+          p: undefined,
+          a: "acfun.tv",
+          s: "souhu.com",
+          z: "zhihu.com",
+          m: "www.mcdonalds.con.cn"
+        }
+
+        //取出localStorage的zzz中存下来的hash
+        var hashInLocalStorage = getElementForm("zzz") //注意直接这样拿，拿出来的是一个字串.有时候这样会拿到一个空的字符串，把一个空的东西拿去parse可能会出错的
+        if (hashInLocalStorage) {
+          hash = hashInLocalStorage
+        }
+        return {
+          keys: keys,
+          hash: hash
+        }
       }
     </script>
   </body>
