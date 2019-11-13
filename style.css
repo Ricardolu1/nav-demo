@@ -61,7 +61,7 @@ main {
   position: relative;
 }
 body{
-  background: grey url(./wall2.jpg) no-repeat center center;
+  background: grey url(./wall3.png) no-repeat center center;
   background-size: cover;
 }
 main .wrapper{
